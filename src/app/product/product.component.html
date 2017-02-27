@@ -21,33 +21,47 @@
           [placeholder]="customPlaceholder" 
           type="text" 
           name="name"
+          required
           [(ngModel)]="product.name"
+          #name="ngModel"
     >
+    <div class="error" *ngIf="!name.valid && name.touched">
+      Pole wymagane
+    </div>
   </div>
 
   <div>
     <label for="category">Kategoria:</label>
-    <select [(ngModel)]="product.category" name="category">
+    <select [(ngModel)]="product.category" name="category" #category="ngModel">
       <option [value]="category" 
               *ngFor="let category of categories">
         {{ category }}
       </option>
     </select>
+    <div class="error" *ngIf="!category.valid">
+      Pole wymagane
+    </div>
   </div>
 
   <div>
     <label for="description">Opis:</label>
-    <input [(ngModel)]="product.description" type="text" name="description">
+    <input [(ngModel)]="product.description" 
+          type="text" 
+          name="description" 
+          #description="ngModel">
+    <div class="error" *ngIf="!description.valid" >
+      Pole wymagane
+    </div>
   </div>
 
   <div>
     <pre>
-      {{ productForm.value | json }}
+      {{ productForm.valid | json }}
     </pre>
   </div>
 
   <div>
-    <button type="submit">Zapisz</button>
+    <button type="submit" [disabled]="!productForm.valid">Zapisz</button>
     <button type="button" (click)="onReset(productForm)">Reset</button>
   </div>
 </form>
