@@ -14,19 +14,40 @@
 <br/>
 <hr/>
 
-<form>
+<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
   <div>
     <label for="name">Name: </label>
-    <input [placeholder]="placeholder" type="text" name="name">
+    <input 
+          [placeholder]="customPlaceholder" 
+          type="text" 
+          name="name"
+          [(ngModel)]="product.name"
+    >
+  </div>
+
+  <div>
+    <label for="category">Kategoria:</label>
+    <select [(ngModel)]="product.category" name="category">
+      <option [value]="category" 
+              *ngFor="let category of categories">
+        {{ category }}
+      </option>
+    </select>
   </div>
 
   <div>
     <label for="description">Opis:</label>
-    <input type="text" name="description">
+    <input [(ngModel)]="product.description" type="text" name="description">
+  </div>
+
+  <div>
+    <pre>
+      {{ productForm.value | json }}
+    </pre>
   </div>
 
   <div>
     <button type="submit">Zapisz</button>
-    <button type="button" (click)="onReset()">Reset</button>
+    <button type="button" (click)="onReset(productForm)">Reset</button>
   </div>
 </form>

@@ -8,17 +8,26 @@ import { Product } from './product';
 })
 export class ProductComponent implements OnInit {
   product: Product;
-  placeholder: string = "test";
+  customPlaceholder: string;
+  categories: string[];
 
-  constructor() { }
+  constructor() {
+    this.customPlaceholder = 'Nazwa';
+    this.categories = ['AGD', 'RTV', 'spożywcze'];
+  }
 
   ngOnInit() {
     this.product = new Product(1, 'kubek', 'AGD', 'dobry kubek');
     console.log(this.product);
   }
 
-  onReset() {
-    console.log('Resetuje formularz');
+  onReset(productForm) {
+    productForm.reset();
+  }
+
+  onSubmit(productForm){
+    console.log(productForm.value, 'form value');
+    console.log(productForm.valid, 'form valid');
   }
 
 }
