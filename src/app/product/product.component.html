@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Produkt</h1>
+  <div>
+    Nazwa: {{ product.name }}
+  </div>
+  <div>
+    Kategoria: {{ product.category }}
+  </div>
+  <div>
+    Opis: {{ product.description }}
+  </div>
+</div>
+
+<br/>
+<hr/>
+
+<form>
+  <div>
+    <label for="name">Name: </label>
+    <input [placeholder]="placeholder" type="text" name="name">
+  </div>
+
+  <div>
+    <label for="description">Opis:</label>
+    <input type="text" name="description">
+  </div>
+
+  <div>
+    <button type="submit">Zapisz</button>
+    <button type="button" (click)="onReset()">Reset</button>
+  </div>
+</form>
