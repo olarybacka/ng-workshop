@@ -1,18 +1,15 @@
-export class Product {
-    // id: number;
-    // name: string;
-    // category: string;
-    // description?: string;
+export interface Category {
+    id: number;
+    name: string;
+}
 
-    // constructor(id, name, category, description) {
-    //     this.id = id;
-    //     this.name = name;
-    // }
+
+export class Product {
 
     constructor(
         public id: number,
         public name: string,
-        public category: string,
+        public category: Category,
         public description?: string
     ) {}
 }

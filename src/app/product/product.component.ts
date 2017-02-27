@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from './product';
+import { Product, Category } from './product';
 
 @Component({
   selector: 'app-product',
@@ -9,15 +9,19 @@ import { Product } from './product';
 export class ProductComponent implements OnInit {
   product: Product;
   customPlaceholder: string;
-  categories: string[];
+  categories: Category[];
 
   constructor() {
     this.customPlaceholder = 'Nazwa';
-    this.categories = ['AGD', 'RTV', 'spożywcze'];
+    this.categories = [
+      {id: 1, name: 'AGD'},
+      {id: 2, name: 'RTV'},
+      {id: 3, name: 'spożywcze'}
+      ];
   }
 
   ngOnInit() {
-    this.product = new Product(1, null, 'AGD', 'dobry kubek');
+    this.product = new Product(1, null, {id: 1, name: 'AGD'}, 'dobry kubek');
     console.log(this.product);
   }
 

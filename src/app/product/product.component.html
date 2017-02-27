@@ -33,9 +33,9 @@
   <div>
     <label for="category">Kategoria:</label>
     <select [(ngModel)]="product.category" name="category" #category="ngModel">
-      <option [value]="category" 
+      <option [value]="category.id" 
               *ngFor="let category of categories">
-        {{ category }}
+        {{ category.name }}
       </option>
     </select>
     <div class="error" *ngIf="!category.valid">
