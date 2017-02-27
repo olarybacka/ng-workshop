@@ -8,13 +8,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductComponent } from './product/product.component';
+import { UserComponent } from './user/user.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserService } from './user/user.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ProfileComponent,
-    ProductComponent
+    ProductComponent,
+    UserComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,7 @@ import { ProductComponent } from './product/product.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
